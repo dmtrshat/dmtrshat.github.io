@@ -1,0 +1,26 @@
+{% macro main() %}
+<section
+  id="blog"
+  aria-labelledby="blog-title"
+  class="g!width=100%; g!padding=24px; g!margin=calc(5%_-_24px)_0; g!display=grid; g!grid-template-rows=max-content_auto; g!grid-row-gap=24px; g!height=max-content;"
+>
+  <header>
+    <h2
+      id="about-title"
+      class="g!font-size=mrs(20px_24px_380px_800px); g!color=var(--brand-11);"
+    >
+      Blog
+    </h2>
+  </header>
+  <div>
+    <p class="g!font-size=mrs(14px_16px_380px_800px);">
+      See my posts on the
+      <a
+        class="g!hover:font-weight=bold; g!text-decoration=underline; g!color=var(--brand-9); g!hover:color=var(--brand-10); g!transition=all_$tr-fast;"
+        href="{{ get_url(path='@/blog/_index.md') }}"
+        >blog page</a
+      >.
+    </p>
+  </div>
+</section>
+{% endmacro main %}

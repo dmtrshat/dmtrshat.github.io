@@ -1,0 +1,48 @@
+{% import "shared/macro_external_link.html" as macros_external_link %} 
+
+{% macro main() %}
+<section
+  id="outro"
+  aria-labelledby="outro-title"
+  class="g!width=100%; g!display=grid; g!grid-template-rows=max-content_auto; g!grid-row-gap=24px; g!height=max-content; g!background-color=var(--brand-a3); g!padding=24px; g!margin-top=calc(5%_-_24px);"
+>
+  <header>
+    <h2
+      id="about-title"
+      class="g!font-size=mrs(20px_24px_380px_800px); g!color=var(--brand-11);"
+    >
+      Outro
+    </h2>
+  </header>
+  <div class="g!display=grid; g!grid-row-gap=24px;">
+    <div class="g!display=grid; g!grid-row-gap=12px;">
+      <p class="g!font-size=mrs(14px_16px_380px_800px);">
+        Thank you for taking the time to learn a bit about me! If you're
+        interested in exploring my work further or just want to connect, here
+        are some links to my online presence:
+      </p>
+
+      <ul
+        class="g!padding=0; g!list-style=none; g!border=none; g!font-size=mrs(12px_14px_380px_800px); g!display=grid; g!grid-auto-rows=max-content; g!grid-row-gap=6px; g!padding-left=12px; g!grid-template-columns=max-content;"
+      >
+        {{ macros_external_link::main(href="https://github.com/dmtrshat", aria_label="GitHub", text="GitHub") }}
+        {{ macros_external_link::main(href="https://www.linkedin.com/in/dmtrshat/", aria_label="LinkedIn", text="LinkedIn") }}
+        {{ macros_external_link::main(href="https://dev.to/dmtrshat", aria_label="Dev.to blog", text="Dev.to") }}
+        {{ macros_external_link::main(href="https://hackernoon.com/u/dmtrshat", aria_label="Hackernoon blog", text="Hackernoon") }}
+      </ul>
+    </div>
+
+    <div class="g!display=grid; g!grid-row-gap=12px;">
+      <p class="g!font-size=mrs(14px_16px_380px_800px);">
+        And don't forget to check out my wife's amazing social:
+      </p>
+      <ul
+        class="g!padding=0; g!list-style=none; g!border=none; g!font-size=mrs(12px_14px_380px_800px); g!display=grid; g!grid-auto-rows=max-content; g!grid-row-gap=6px; g!padding-left=12px; g!grid-template-columns=max-content;"
+      >
+        {{ macros_external_link::main(href="https://www.youtube.com/@dariashatokhina392", aria_label="Dasha's YouTube", text="Dasha's YouTube") }}
+        {{ macros_external_link::main(href="https://www.instagram.com/daryashatokhina/", aria_label="Dasha's Instagram", text="Dasha's Instagram") }}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endmacro main %}

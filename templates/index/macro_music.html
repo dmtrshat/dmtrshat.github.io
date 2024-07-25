@@ -1,0 +1,52 @@
+{% import "shared/macro_external_link.html" as macros_external_link %} {% macro
+main() %}
+<section
+  id="music"
+  aria-labelledby="music-title"
+  class="g!width=100%; g!padding=24px; g!margin=calc(5%_-_24px)_0; g!display=grid; g!grid-template-rows=max-content_auto; g!grid-row-gap=24px; g!height=max-content;"
+>
+  <header class="g!display=grid; g!grid-row-gap=12px;">
+    <h2
+      id="about-title"
+      class="g!font-size=mrs(20x_24px_380px_800px); g!color=var(--brand-11);"
+    >
+      Music
+    </h2>
+
+    <ul
+      class="g!padding=0; g!list-style=none; g!border=none; g!font-size=mrs(12px_14px_380px_800px); g!display=grid; g!grid-auto-flow=column; g!grid-auto-columns=max-content; g!grid-column-gap=6px;"
+    >
+      {{
+      macros_external_link::main(href="https://music.apple.com/ru/artist/papa-dima/1746374696?l=en-GB",
+      aria_label="Apple Music", text="Apple Music") }} {{
+      macros_external_link::main(href="https://open.spotify.com/artist/0bGvb0429HS5x3IxcGSVBJ",
+      aria_label="Spotify", text="Spotify") }}
+    </ul>
+  </header>
+
+  <p class="g!font-size=mrs(14px_16px_380px_800px);">
+    Music is my constant companion. Whether I'm coding, relaxing, or spending
+    time with my family, there's always a soundtrack playing in the background.
+    I recently released my first album - "Pure Moments Pt. 1", a collection of
+    lo-fi/downtempo/chill tracks that capture the precious moments of my
+    daughter's growth. Each track tells a story, and for me, it's a way to
+    encapsulate the beautiful moments of our lives. Music isn't just a hobby;
+    it's a passion that adds a unique rhythm to everything I do.
+  </p>
+
+  <div class="g!position=relative; g!margin=24px_0;">
+    <p
+      class="g!height=24px; g!width=140px; g!padding=3px; g!background-color=var(--brand-1); g!position=absolute; g!top=-12px; g!left=12px; g!text-align=center; g!font-size=12px;"
+    >
+      Pure Moments Pt. 1
+    </p>
+
+    <div class="g!border=1px_solid_var(--neutral-6); g!border-radius=4px;">
+      <ul
+        id="tracks_papa-dima"
+        class="g!list-style=none; g!display=grid; g!grid-auto-rows=max-content; g!grid-row-gap=6px; g!padding=12px_6px; g!overflow-x=hidden; g!grid-template-columns=100%; g!width=100%;"
+      ></ul>
+    </div>
+  </div>
+</section>
+{% endmacro main %}

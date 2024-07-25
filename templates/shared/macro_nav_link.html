@@ -1,0 +1,10 @@
+{% macro main(href, aria_label, text) %}
+<li>
+  <a
+    href="{{ href }}"
+    class="g!text-decoration=none; g!color=var(--brand-12); g!hover:color=var(--brand-11); g!hover:text-decoration=underline;"
+    aria-label="{{ aria_label }}"
+    >{{ text }}</a
+  >
+</li>
+{% endmacro main %}

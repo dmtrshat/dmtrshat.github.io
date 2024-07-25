@@ -1,0 +1,43 @@
+{% macro main() %}
+<section
+  id="intro"
+  class="g!width=100%; g!height=max-content; g!width=100%; g!display=grid; g!grid-template-rows=max-content_max-content_auto; g!grid-row-gap=5%; g!md__grid-row-gap=12px; g!align-content=center; g!md__align-content=space-evenly; g!padding=0_24px; g!min-height=calc(100dvh_-_33px_-_12px_-_36px_-_12px); g!height=max-content;"
+  aria-labelledby="intro-title"
+>
+  <div
+    class="g!background-image=url('../assets/photo.webp'); g!width=50%; g!background-repeat=no-repeat; g!aspect-ratio=3/4; g!position=relative; g!background-position=center; g!background-size=contain; g!box-shadow=0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24); g!border-radius=4px; g!hover:box-shadow=0_3px_6px_rgba(0,0,0,0.16),_0_3px_6px_rgba(0,0,0,0.23); g!cursor=help; g!transition=all_$tr-fast; g!active:box-shadow=none;"
+    role="img"
+    aria-label="Profile photo of Dmitrii Shatokhin"
+    id="me-cover"
+  >
+    <div
+      class="g!position=absolute; g!top=0; g!left=0; g!width=100%; g!height=100%; g!background-color=var(--brand-9); g!opacity=0.2; g!pointer-events=none;"
+    ></div>
+  </div>
+
+  <div class="g!height=max-content;">
+    <p
+      class="g!font-size=mrs(7px_16px_380px_800px);"
+      aria-label="Information about Dmitrii Shatokhin"
+    >
+      @dmtrshat ∙ 10+ yrs Software Engineer/Architect ∙ Earth
+    </p>
+    <h1
+      id="intro-title"
+      class="g!font-size=mrs(28px_72px_380px_800px); g!color=var(--brand-11);"
+    >
+      DMITRII SHATOKHIN
+    </h1>
+    <p class="g!font-size=mrs(7px_16px_380px_800px); g!font-weight=bold;">
+      RUST / PYTHON / JAVASCRIPT / AI / DATA SCIENCE / WEB 3.0 / BLOCKCHAIN / UI
+    </p>
+  </div>
+
+  <p class="g!font-size=mrs(14px_16px_380px_800px);">
+    Hey there! I'm Dmitrii, a seasoned Software Engineer and Architect with a
+    decade of experience under my belt. My journey through the tech world has
+    been nothing short of exhilarating, and I'm thrilled to share a bit about it
+    with you. Let's dive in!
+  </p>
+</section>
+{% endmacro main %}

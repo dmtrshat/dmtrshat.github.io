@@ -1,0 +1,164 @@
+{% macro main() %}
+<div
+  id="player"
+  class="g!font-size=mrs(13px_17px_380px_800px); g!display=none; g!background-color=var(--neutral-3); g!padding=12px; g!grid-auto-flow=row; g!padding=6px_18px; g!grid-row-gap=12px;"
+>
+  <header
+    class="g!display=grid; g!grid-template-columns=auto_max-content; g!position=relative; g!padding-left=100px; g!align-items=start; g!grid-column-gap=12px;"
+  >
+    <div
+      id="player__track-cover"
+      class="g!aspect-ratio=1/1; g!height=64px; g!width=64px; g!background-repeat=no-repeat; g!background-size=contain; g!width=64px; g!height=64px; g!border-radius=50%; g!background-size=cover; g!overflow=hidden; g!border=18px_solid_#1C1C1C; g!position=absolute; g!left=12px; g!top=-18px; g!box-shadow=0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24); g!height=68px; g!width=68px;"
+    >
+      <div
+        class="g!content=''; g!position=absolute; g!top=50%; g!left=50%; g!width=3px; g!height=3px; g!background-color=black; g!border-radius=50%; g!transform=translate(-50%,_-50%); g!z-index=1;"
+      ></div>
+    </div>
+    <div
+      class="g!display=grid; g!grid-auto-flow=row; g!grid-auto-rows=max-content;"
+    >
+      <h1
+        id="player__track-name"
+        class="g!font-size=mrs(16px_20px_380px_800px);"
+      ></h1>
+      <div
+        class="g!display=grid; g!grid-auto-flow=column; g!grid-auto-columns=max-content; g!column-gap=6px; g!font-size=mrs(10px_12px_380px_800px);"
+      >
+        <p id="player__track-artist"></p>
+        <p class="g!color=var(--neutral-6);">/</p>
+        <p id="player__track-album"></p>
+      </div>
+    </div>
+    <button
+      id="player__close"
+      class="g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% g!display=grid; g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12);"
+    >
+      <svg
+        width="15"
+        height="15"
+        viewBox="0 0 15 15"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12.8536 2.85355C13.0488 2.65829 13.0488 2.34171 12.8536 2.14645C12.6583 1.95118 12.3417 1.95118 12.1464 2.14645L7.5 6.79289L2.85355 2.14645C2.65829 1.95118 2.34171 1.95118 2.14645 2.14645C1.95118 2.34171 1.95118 2.65829 2.14645 2.85355L6.79289 7.5L2.14645 12.1464C1.95118 12.3417 1.95118 12.6583 2.14645 12.8536C2.34171 13.0488 2.65829 13.0488 2.85355 12.8536L7.5 8.20711L12.1464 12.8536C12.3417 13.0488 12.6583 13.0488 12.8536 12.8536C13.0488 12.6583 13.0488 12.3417 12.8536 12.1464L8.20711 7.5L12.8536 2.85355Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </button>
+  </header>
+
+  <footer
+    class="g!display=grid; g!grid-auto-flow=row; g!align-content=center; g!justify-content=space-between; g!align-items=center; g!grid-column-gap=6px; g!grid-template-columns=100%; g!grid-auto-rows=max-content; g!grid-row-gap=6px;"
+  >
+    <div
+      id="player__progress-bar-container"
+      class="g!position=relative; g!width=100%; g!height=6px; g!background-color=var(--brand-2); g!cursor=pointer;"
+    >
+      <div
+        id="player__progress-bar"
+        class="g!position=absolute; g!height=100%; g!width=0; g!background-color=var(--brand-5);"
+      ></div>
+    </div>
+
+    <div
+      class="g!display=grid; g!grid-auto-flow=column; g!grid-auto-columns=max-content_auto_max-content; g!align-items=center;"
+    >
+      <p
+        id="player__current-time"
+        class="g!font-size=mrs(10px_12px_380px_800px); g!color=var(--neutral-11); g!user-select=none;"
+      >
+        0:00
+      </p>
+      <div
+        id="player__track-controls"
+        class="g!display=grid; g!grid-auto-flow=column; g!grid-auto-columns=max-content; g!grid-column-gap=3px; g!justify-content=center;"
+      >
+        <button
+          id="player__track-control_prev"
+          class="g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% g!display=grid; g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12); g!disabled:cursor=not-allowed; g!disabled:color=var(--neutral-6); g!disabled:background=none;"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.94976 2.74989C1.94976 2.44613 2.196 2.19989 2.49976 2.19989C2.80351 2.19989 3.04976 2.44613 3.04976 2.74989V7.2825C3.0954 7.18802 3.17046 7.10851 3.26662 7.05776L12.2666 2.30776C12.4216 2.22596 12.6081 2.23127 12.7582 2.32176C12.9083 2.41225 13 2.57471 13 2.74995V12.25C13 12.4252 12.9083 12.5877 12.7582 12.6781C12.6081 12.7686 12.4216 12.7739 12.2666 12.6921L3.26662 7.94214C3.17046 7.89139 3.0954 7.81188 3.04976 7.7174V12.2499C3.04976 12.5536 2.80351 12.7999 2.49976 12.7999C2.196 12.7999 1.94976 12.5536 1.94976 12.2499V2.74989ZM4.57122 7.49995L12 11.4207V3.5792L4.57122 7.49995Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <button
+          id="player__track-control_play-pause"
+          data-player-state="pause"
+          class="g!{[data-player-state='pause']_>_#player-state-pause}display=none; g!{[data-player-state='pause']_>_#player-state-play}display=block; g!{[data-player-state='play']_>_#player-state-pause}display=block; g!{[data-player-state='play']_>_#player-state-play}display=none; g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% g!display=grid; g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12);"
+        >
+          <svg
+            id="player-state-play"
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.24182 2.32181C3.3919 2.23132 3.5784 2.22601 3.73338 2.30781L12.7334 7.05781C12.8974 7.14436 13 7.31457 13 7.5C13 7.68543 12.8974 7.85564 12.7334 7.94219L3.73338 12.6922C3.5784 12.774 3.3919 12.7687 3.24182 12.6782C3.09175 12.5877 3 12.4252 3 12.25V2.75C3 2.57476 3.09175 2.4123 3.24182 2.32181ZM4 3.57925V11.4207L11.4288 7.5L4 3.57925Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+
+          <svg
+            id="player-state-pause"
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.04995 2.74998C6.04995 2.44623 5.80371 2.19998 5.49995 2.19998C5.19619 2.19998 4.94995 2.44623 4.94995 2.74998V12.25C4.94995 12.5537 5.19619 12.8 5.49995 12.8C5.80371 12.8 6.04995 12.5537 6.04995 12.25V2.74998ZM10.05 2.74998C10.05 2.44623 9.80371 2.19998 9.49995 2.19998C9.19619 2.19998 8.94995 2.44623 8.94995 2.74998V12.25C8.94995 12.5537 9.19619 12.8 9.49995 12.8C9.80371 12.8 10.05 12.5537 10.05 12.25V2.74998Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <button
+          id="player__track-control_next"
+          class="g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% g!display=grid; g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12); g!disabled:cursor=not-allowed; g!disabled:color=var(--neutral-6); g!disabled:background=none;"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.0502 2.74989C13.0502 2.44613 12.804 2.19989 12.5002 2.19989C12.1965 2.19989 11.9502 2.44613 11.9502 2.74989V7.2825C11.9046 7.18802 11.8295 7.10851 11.7334 7.05776L2.73338 2.30776C2.5784 2.22596 2.3919 2.23127 2.24182 2.32176C2.09175 2.41225 2 2.57471 2 2.74995V12.25C2 12.4252 2.09175 12.5877 2.24182 12.6781C2.3919 12.7686 2.5784 12.7739 2.73338 12.6921L11.7334 7.94214C11.8295 7.89139 11.9046 7.81188 11.9502 7.7174V12.2499C11.9502 12.5536 12.1965 12.7999 12.5002 12.7999C12.804 12.7999 13.0502 12.5536 13.0502 12.2499V2.74989ZM3 11.4207V3.5792L10.4288 7.49995L3 11.4207Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <p
+        id="player__end-time"
+        class="g!font-size=mrs(10px_12px_380px_800px); g!color=var(--neutral-11); g!user-select=none;"
+      >
+        0:00
+      </p>
+    </div>
+  </footer>
+</div>
+{% endmacro main %}

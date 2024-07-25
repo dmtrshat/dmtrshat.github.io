@@ -1,0 +1,22 @@
+{% import "shared/macro_nav_link.html" as macros_nav_link %} {% extends "base.html" %}
+{% block content %}
+<section
+  aria-labelledby="blog-section-title"
+  class="g!min-height=100dvh; g!width=100%; g!max-width=94vw; g!padding=calc(35px_+_3dvw)_0; g!display=grid; g!grid-template-rows=max-content_auto; g!grid-row-gap=24px; g!height=max-content;"
+>
+  <h1 id="blog-section-title" class="title">{{ section.title }}</h1>
+  <ul>
+    {% for page in section.pages %}
+    <li>
+      <a
+        href="{{ page.permalink | safe }}"
+        aria-label="Read more about {{ page.title }}"
+        >{{ page.title }}</a
+      >
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock content %} {% block nav_links %} {{
+macros_nav_link::main(href="https://dmtrshat.github.io", aria_label="About
+Dmitrii Shatokhin", text="[m]ain site") }} {% endblock nav_links %}

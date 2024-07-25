@@ -1,0 +1,40 @@
+{% import "index/macro_intro.html" as macros_intro %}
+{% import "index/macro_about.html" as macros_about %}
+{% import "index/macro_projects.html" as macros_projects %}
+{% import "index/macro_experience.html" as macros_exp %}
+{% import "index/macro_music.html" as macros_music %}
+{% import "index/macro_player.html" as macros_player %}
+{% import "index/macro_blog.html" as macros_blog %}
+{% import "index/macro_outro.html" as macros_outro %}
+{% import "shared/macro_nav_link.html" as macros_nav_link %}
+
+{% extends "base.html" %}
+
+{% block head_scripts %}
+  <script src="{{ get_url(path='js/player.js') }}" defer></script>
+  <script src="{{ get_url(path='js/index.js') }}" defer></script>
+{% endblock head_scripts %}
+
+{% block title %}Home - Dmitrii Shatokhin{% endblock title %}
+
+{% block content %}
+   {{ macros_intro::main() }}
+   {{ macros_about::main() }}
+   {{ macros_projects::main() }}
+   {{ macros_exp::main() }}
+   {{ macros_music::main() }}
+   {{ macros_outro::main() }}
+{% endblock content %}
+
+{% block nav_links %}
+  {{ macros_nav_link::main(href="#intro", aria_label="Intro", text="[i]ntro") }}
+  {{ macros_nav_link::main(href="#about", aria_label="About", text="[a]bout") }}
+  {{ macros_nav_link::main(href="#projects", aria_label="Projects", text="[p]rojects") }}
+  {{ macros_nav_link::main(href="#experience", aria_label="Experience", text="[e]xperience") }}
+  {{ macros_nav_link::main(href="#music", aria_label="Music", text="[m]usic") }}
+  {{ macros_nav_link::main(href="#outro", aria_label="Outro", text="[o]utro") }}
+{% endblock nav_links %}
+
+{% block player %}
+  {{ macros_player::main() }}
+{% endblock player %}
