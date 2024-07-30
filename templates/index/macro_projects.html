@@ -5,7 +5,7 @@
   class="g!width=100%; g!padding=24px; g!margin=calc(5%_-_24px)_0; g!display=grid; g!grid-template-rows=max-content_auto; g!grid-row-gap=48px; g!height=max-content;"
 >
   <div
-    class="g!display=grid; g!grid-template-columns=2fr_1fr; g!overflow=hidden;"
+    class="g!display=grid; g!grid-template-columns=2fr_1fr; g!overflow=hidden; g!padding=12px; g!grid-column-gap=12px;"
   >
     <h3
       class="g!font-size=mrs(18px_36px_380px_800px); g!font-weight=400; g!color=var(--brand-11);"
@@ -17,11 +17,15 @@
         >Persevie</a
       >, and I am creating something special for the world.
     </h3>
-    <div
-      class="g!background-image=url('../assets/persevie.svg'); g!background-size=contain; g!background-repeat=no-repeat; g!background-position-x=right; g!background-position-y=top;"
-      role="img"
-      aria-label="Persevie logo"
-    ></div>
+
+    <img
+      src="{{ get_url(path='assets/persevie.svg') }}"
+      alt="Persevie logo"
+      class="g!border-radius=4px; g!box-shadow=0_3px_6px_rgba(0,0,0,0.16),_0_3px_6px_rgba(0,0,0,0.23); g!height=auto!important; g!width=auto!important;"
+      height="600"
+      width="600"
+      loading="lazy"
+    />
   </div>
   <div
     class="g!display=grid; g!grid-template-rows=max-content_max-content_auto; g!grid-row-gap=24px;"
