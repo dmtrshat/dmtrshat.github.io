@@ -96,10 +96,10 @@ export function setupPlayer() {
     },
     {
       id: "track_10",
-      title: "Concert (ver. 1)",
+      title: "Concert",
       artistId: artistIds.PAPA_DIMA,
       albumId: albumIds.PURE_MOMENTS_PT_1,
-      file: "./assets/music/Concert_(ver._1).wav",
+      file: "./assets/music/Concert.wav",
     },
   ];
 

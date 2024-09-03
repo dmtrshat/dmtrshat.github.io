@@ -14,11 +14,8 @@ export function setupExperience() {
   document
     .getElementById("experience-download-container")
     .addEventListener("click", (e) => {
-      if (e.target && e.target.id === "download-profile") {
-        downloadFile("./assets/Dmitrii_Shatokhin_Profile.pdf");
-      }
       if (e.target && e.target.id === "download-resume") {
-        downloadFile("./assets/Dmitrii_Shatokhin_Resume.pdf");
+        downloadFile("./assets/Resume-Dmitrii-Shatokhin.pdf");
       }
     });
 }
