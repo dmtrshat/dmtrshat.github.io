@@ -15,7 +15,7 @@ export function setupExperience() {
     .getElementById("experience-download-container")
     .addEventListener("click", (e) => {
       if (e.target && e.target.id === "download-resume") {
-        downloadFile("./assets/Resume-Dmitrii-Shatokhin.pdf");
+        downloadFile("./assets/0_Resume_Dmitrii_Shatokhin.pdf");
       }
     });
 }
