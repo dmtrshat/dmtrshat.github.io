@@ -4,25 +4,25 @@
   class="g!font-size=mrs(13px_17px_380px_800px); g!display=none; g!background-color=var(--neutral-3); g!padding=12px; g!grid-auto-flow=row; g!padding=6px_18px; g!grid-row-gap=12px;"
 >
   <header
-    class="g!display=grid; g!grid-template-columns=auto_max-content; g!position=relative; g!padding-left=100px; g!align-items=start; g!grid-column-gap=12px;"
+    class="d=grid g!grid-template-columns=auto_max-content; g!position=relative; g!padding-left=100px; g!align-items=start; g!grid-column-gap=12px;"
   >
     <div
       id="player__track-cover"
-      class="g!aspect-ratio=1/1; g!height=64px; g!width=64px; g!background-repeat=no-repeat; g!background-size=contain; g!width=64px; g!height=64px; g!border-radius=50%; g!background-size=cover; g!overflow=hidden; g!border=18px_solid_#1C1C1C; g!position=absolute; g!left=12px; g!top=-18px; g!box-shadow=0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24); g!height=68px; g!width=68px;"
+      class="g!aspect-ratio=1/1; g!background-repeat=no-repeat; g!background-size=contain; g!border-radius=50%; g!background-size=cover; g!overflow=hidden; g!border=18px_solid_#1C1C1C; g!position=absolute; g!left=12px; g!top=-18px; g!box-shadow=0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24); g!height=68px; g!width=68px;"
     >
       <div
         class="g!content=''; g!position=absolute; g!top=50%; g!left=50%; g!width=3px; g!height=3px; g!background-color=black; g!border-radius=50%; g!transform=translate(-50%,_-50%); g!z-index=1;"
       ></div>
     </div>
     <div
-      class="g!display=grid; g!grid-auto-flow=row; g!grid-auto-rows=max-content;"
+      class="d=grid g!grid-auto-flow=row; g!grid-auto-rows=max-content;"
     >
       <h1
         id="player__track-name"
         class="g!font-size=mrs(16px_20px_380px_800px);"
       ></h1>
       <div
-        class="g!display=grid; g!grid-auto-flow=column; g!grid-auto-columns=max-content; g!column-gap=6px; g!font-size=mrs(10px_12px_380px_800px);"
+        class="d=grid graf=column grac=max-content g!column-gap=6px; g!font-size=mrs(10px_12px_380px_800px);"
       >
         <p id="player__track-artist"></p>
         <p class="g!color=var(--neutral-6);">/</p>
@@ -31,7 +31,7 @@
     </div>
     <button
       id="player__close"
-      class="g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% g!display=grid; g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12);"
+      class="g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% d=grid g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12);"
     >
       <svg
         width="15"
@@ -51,11 +51,11 @@
   </header>
 
   <footer
-    class="g!display=grid; g!grid-auto-flow=row; g!align-content=center; g!justify-content=space-between; g!align-items=center; g!grid-column-gap=6px; g!grid-template-columns=100%; g!grid-auto-rows=max-content; g!grid-row-gap=6px;"
+    class="d=grid g!grid-auto-flow=row; g!align-content=center; jc=space-between g!align-items=center; g!grid-column-gap=6px; g!grid-template-columns=100%; g!grid-auto-rows=max-content; g!grid-row-gap=6px;"
   >
     <div
       id="player__progress-bar-container"
-      class="g!position=relative; g!width=100%; g!height=6px; g!background-color=var(--brand-2); g!cursor=pointer;"
+      class="g!position=relative; w=100% g!height=6px; g!background-color=var(--brand-2); g!cursor=pointer;"
     >
       <div
         id="player__progress-bar"
@@ -64,7 +64,7 @@
     </div>
 
     <div
-      class="g!display=grid; g!grid-auto-flow=column; g!grid-auto-columns=max-content_auto_max-content; g!align-items=center;"
+      class="d=grid graf=column g!grid-auto-columns=max-content_auto_max-content; g!align-items=center;"
     >
       <p
         id="player__current-time"
@@ -74,11 +74,11 @@
       </p>
       <div
         id="player__track-controls"
-        class="g!display=grid; g!grid-auto-flow=column; g!grid-auto-columns=max-content; g!grid-column-gap=3px; g!justify-content=center;"
+        class="d=grid graf=column grac=max-content g!grid-column-gap=3px; g!justify-content=center;"
       >
         <button
           id="player__track-control_prev"
-          class="g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% g!display=grid; g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12); g!disabled:cursor=not-allowed; g!disabled:color=var(--neutral-6); g!disabled:background=none;"
+          class="g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% d=grid g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12); g!disabled:cursor=not-allowed; g!disabled:color=var(--neutral-6); g!disabled:background=none;"
         >
           <svg
             width="15"
@@ -98,7 +98,7 @@
         <button
           id="player__track-control_play-pause"
           data-player-state="pause"
-          class="g!{[data-player-state='pause']_>_#player-state-pause}display=none; g!{[data-player-state='pause']_>_#player-state-play}display=block; g!{[data-player-state='play']_>_#player-state-pause}display=block; g!{[data-player-state='play']_>_#player-state-play}display=none; g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% g!display=grid; g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12);"
+          class="g!{[data-player-state='pause']_>_#player-state-pause}display=none; g!{[data-player-state='pause']_>_#player-state-play}display=block; g!{[data-player-state='play']_>_#player-state-pause}display=block; g!{[data-player-state='play']_>_#player-state-play}display=none; g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% d=grid g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12);"
         >
           <svg
             id="player-state-play"
@@ -134,7 +134,7 @@
         </button>
         <button
           id="player__track-control_next"
-          class="g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% g!display=grid; g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12); g!disabled:cursor=not-allowed; g!disabled:color=var(--neutral-6); g!disabled:background=none;"
+          class="g!border=none; g!padding=6px; g!background=none; g!hover:background-color=var(--neutral-4); g!active:background-color=var(--neutral-5); g!cursor=pointer; g!transition=all_$tr-fast; g!height=100% g!width=100% d=grid g!justify-content=center; g!color=var(--brand-11); g!hover:color=var(--brand-12); g!disabled:cursor=not-allowed; g!disabled:color=var(--neutral-6); g!disabled:background=none;"
         >
           <svg
             width="15"

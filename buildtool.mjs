@@ -12,7 +12,6 @@ const SRC_JS = path.resolve("src/js");
 const TEMPLATES = path.resolve("templates/**/*.html");
 const CONTENT = path.resolve("content/**/*");
 const STATIC_JS = path.resolve("static/js");
-const GRIMOIRE_CSS_PATH = process.env.GRIMOIRE_CSS_PATH;
 
 const program = new Command();
 
@@ -52,7 +51,7 @@ async function grimoireBuild() {
   console.log(chalk.blue("Building CSS with Grimoire..."));
   try {
     const startTime = Date.now();
-    await runCommand(`node ${GRIMOIRE_CSS_PATH} build`);
+    await runCommand("gcssjs build");
     const endTime = Date.now();
     const duration = endTime - startTime;
     console.log(chalk.green("Grimoire CSS build complete"));
