@@ -116,6 +116,7 @@ function grimoireCssIntegration() {
 
 // https://astro.build/config
 export default defineConfig({
+	outDir: "./docs",
 	integrations: [grimoireCssIntegration()],
 	vite: {
 		plugins: [grimoireCssReloadPlugin()],

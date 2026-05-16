@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
-const distDir = path.resolve(scriptDir, '../dist');
+const distDir = path.resolve(scriptDir, '../docs');
 const outputFile = path.join(distDir, 'urls-to-cache.json');
 
 if (!fs.existsSync(distDir)) {
