@@ -1,0 +1,16 @@
+---
+import NavLink from '../../components/NavLink.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="List of blog posts" stylesheetHref="/css/blog.css">
+	<NavLink slot="nav-links" href="/" ariaLabel="About Dmitrii Shatokhin" text="[m]ain site" />
+
+	<section
+		aria-labelledby="blog-section-title"
+		class="min-height=100dvh width=100% max-width=94vw padding=calc(35px_+_3dvw)_0 display=grid grid-template-rows=max-content_auto grid-row-gap=24px height=max-content"
+	>
+		<h1 id="blog-section-title" class="title">List of blog posts</h1>
+		<ul></ul>
+	</section>
+</BaseLayout>

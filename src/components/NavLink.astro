@@ -1,0 +1,19 @@
+---
+interface Props {
+	href: string;
+	ariaLabel: string;
+	text: string;
+}
+
+const { href, ariaLabel, text } = Astro.props;
+---
+
+<li>
+	<a
+		href={href}
+		class="text-decoration=none color=var(--brand-12) hover:color=var(--brand-11) hover:text-decoration=underline"
+		aria-label={ariaLabel}
+	>
+		{text}
+	</a>
+</li>

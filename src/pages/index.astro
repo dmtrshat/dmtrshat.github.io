@@ -1,0 +1,620 @@
+---
+import ExternalLink from "../components/ExternalLink.astro";
+import NavLink from "../components/NavLink.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const seniority = new Date().getFullYear() - 2013;
+---
+
+<link rel="stylesheet" href="/css/index.css" />
+
+<BaseLayout
+  title="Home - Dmitrii Shatokhin"
+  preloadImageHref="/assets/photo.webp"
+>
+  <NavLink slot="nav-links" href="#intro" ariaLabel="Intro" text="intro" />
+  <NavLink slot="nav-links" href="#about" ariaLabel="About" text="about" />
+  <NavLink
+    slot="nav-links"
+    href="#projects"
+    ariaLabel="Projects"
+    text="projects"
+  />
+  <NavLink
+    slot="nav-links"
+    href="#experience"
+    ariaLabel="Experience"
+    text="experience"
+  />
+  <NavLink slot="nav-links" href="#music" ariaLabel="Music" text="music" />
+  <NavLink
+    slot="nav-links"
+    href="#contacts"
+    ariaLabel="Contacts"
+    text="contacts"
+  />
+
+  <div
+    slot="player"
+    id="player"
+    class="font-size=mrs(13px_17px_380px_800px) display=none padding=12px grid-auto-flow=row padding=6px_18px grid-row-gap=12px box-shadow=0_1px_3px_#0000001f,_0_1px_2px_#0000003d border-radius=4px border=1px_solid_var(--neutral-a6) background-color=var(--neutral-a2) backdrop-filter=blur(25px)_brightness(2)"
+  >
+    <header
+      class="display=grid grid-template-columns=auto_max-content position=relative padding-left=100px align-items=start grid-column-gap=12px"
+    >
+      <div
+        id="player__track-cover"
+        class="aspect-ratio=1/1 background-repeat=no-repeat background-size=contain border-radius=50% background-size=cover overflow=hidden border=18px_solid_#1C1C1C position=absolute left=12px top=-18px box-shadow=0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24) height=68px width=68px"
+      >
+        <div
+          class="content='' position=absolute top=50% left=50% width=3px height=3px background-color=black border-radius=50% transform=translate(-50%,_-50%) z-index=1"
+        >
+        </div>
+      </div>
+      <div class="display=grid grid-auto-flow=row grid-auto-rows=max-content">
+        <h1
+          id="player__track-name"
+          class="font-size=mrs(16px_20px_380px_800px)"
+        >
+        </h1>
+        <div
+          class="display=grid grid-auto-flow=column grid-auto-columns=max-content column-gap=6px font-size=mrs(10px_12px_380px_800px)"
+        >
+          <p id="player__track-artist"></p>
+          <p class="color=var(--neutral-11)">/</p>
+          <p id="player__track-album"></p>
+        </div>
+      </div>
+      <button
+        id="player__close"
+        class="border-radius=4px border=none padding=6px background=none hover:background-color=var(--neutral-4) active:background-color=var(--neutral-5) cursor=pointer transition=all_$tr-fast height=max-content width=100% display=grid justify-content=center color=var(--brand-11) hover:color=var(--brand-12)"
+      >
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.8536 2.85355C13.0488 2.65829 13.0488 2.34171 12.8536 2.14645C12.6583 1.95118 12.3417 1.95118 12.1464 2.14645L7.5 6.79289L2.85355 2.14645C2.65829 1.95118 2.34171 1.95118 2.14645 2.14645C1.95118 2.34171 1.95118 2.65829 2.14645 2.85355L6.79289 7.5L2.14645 12.1464C1.95118 12.3417 1.95118 12.6583 2.14645 12.8536C2.34171 13.0488 2.65829 13.0488 2.85355 12.8536L7.5 8.20711L12.1464 12.8536C12.3417 13.0488 12.6583 13.0488 12.8536 12.8536C13.0488 12.6583 13.0488 12.3417 12.8536 12.1464L8.20711 7.5L12.8536 2.85355Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+            clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </header>
+
+    <footer
+      class="display=grid grid-auto-flow=row align-content=center justify-content=space-between align-items=center grid-column-gap=6px grid-template-columns=100% grid-auto-rows=max-content grid-row-gap=6px"
+    >
+      <div
+        id="player__progress-bar-container"
+        class="position=relative width=100% height=6px background-color=var(--neutral-2) cursor=pointer"
+      >
+        <div
+          id="player__progress-bar"
+          class="position=absolute height=100% width=0 background-color=var(--brand-11)"
+        >
+        </div>
+      </div>
+
+      <div
+        class="display=grid grid-auto-flow=column grid-auto-columns=max-content_auto_max-content align-items=center"
+      >
+        <p
+          id="player__current-time"
+          class="font-size=mrs(10px_12px_380px_800px) color=var(--neutral-11) user-select=none"
+        >
+          0:00
+        </p>
+        <div
+          id="player__track-controls"
+          class="display=grid grid-auto-flow=column grid-auto-columns=max-content grid-column-gap=3px justify-content=center"
+        >
+          <button
+            id="player__track-control_prev"
+            class="border-radius=4px border=none padding=6px background=none hover:background-color=var(--neutral-4) active:background-color=var(--neutral-5) cursor=pointer transition=all_$tr-fast height=100% width=100% display=grid justify-content=center color=var(--brand-11) hover:color=var(--brand-12) disabled:cursor=not-allowed disabled:color=var(--neutral-8) disabled:background=none"
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.94976 2.74989C1.94976 2.44613 2.196 2.19989 2.49976 2.19989C2.80351 2.19989 3.04976 2.44613 3.04976 2.74989V7.2825C3.0954 7.18802 3.17046 7.10851 3.26662 7.05776L12.2666 2.30776C12.4216 2.22596 12.6081 2.23127 12.7582 2.32176C12.9083 2.41225 13 2.57471 13 2.74995V12.25C13 12.4252 12.9083 12.5877 12.7582 12.6781C12.6081 12.7686 12.4216 12.7739 12.2666 12.6921L3.26662 7.94214C3.17046 7.89139 3.0954 7.81188 3.04976 7.7174V12.2499C3.04976 12.5536 2.80351 12.7999 2.49976 12.7999C2.196 12.7999 1.94976 12.5536 1.94976 12.2499V2.74989ZM4.57122 7.49995L12 11.4207V3.5792L4.57122 7.49995Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+          <button
+            id="player__track-control_play-pause"
+            data-player-state="pause"
+            class="border-radius=4px {[data-player-state='pause']_>_#player-state-pause}display=none {[data-player-state='pause']_>_#player-state-play}display=block {[data-player-state='play']_>_#player-state-pause}display=block {[data-player-state='play']_>_#player-state-play}display=none border=none padding=6px background=none hover:background-color=var(--neutral-4) active:background-color=var(--neutral-5) cursor=pointer transition=all_$tr-fast height=100% width=100% display=grid justify-content=center color=var(--brand-11) hover:color=var(--brand-12)"
+          >
+            <svg
+              id="player-state-play"
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.24182 2.32181C3.3919 2.23132 3.5784 2.22601 3.73338 2.30781L12.7334 7.05781C12.8974 7.14436 13 7.31457 13 7.5C13 7.68543 12.8974 7.85564 12.7334 7.94219L3.73338 12.6922C3.5784 12.774 3.3919 12.7687 3.24182 12.6782C3.09175 12.5877 3 12.4252 3 12.25V2.75C3 2.57476 3.09175 2.4123 3.24182 2.32181ZM4 3.57925V11.4207L11.4288 7.5L4 3.57925Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"></path>
+            </svg>
+
+            <svg
+              id="player-state-pause"
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.04995 2.74998C6.04995 2.44623 5.80371 2.19998 5.49995 2.19998C5.19619 2.19998 4.94995 2.44623 4.94995 2.74998V12.25C4.94995 12.5537 5.19619 12.8 5.49995 12.8C5.80371 12.8 6.04995 12.5537 6.04995 12.25V2.74998ZM10.05 2.74998C10.05 2.44623 9.80371 2.19998 9.49995 2.19998C9.19619 2.19998 8.94995 2.44623 8.94995 2.74998V12.25C8.94995 12.5537 9.19619 12.8 9.49995 12.8C9.80371 12.8 10.05 12.5537 10.05 12.25V2.74998Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+          <button
+            id="player__track-control_next"
+            class="border-radius=4px border=none padding=6px background=none hover:background-color=var(--neutral-4) active:background-color=var(--neutral-5) cursor=pointer transition=all_$tr-fast height=100% width=100% display=grid justify-content=center color=var(--brand-11) hover:color=var(--brand-12) disabled:cursor=not-allowed disabled:color=var(--neutral-8) disabled:background=none"
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.0502 2.74989C13.0502 2.44613 12.804 2.19989 12.5002 2.19989C12.1965 2.19989 11.9502 2.44613 11.9502 2.74989V7.2825C11.9046 7.18802 11.8295 7.10851 11.7334 7.05776L2.73338 2.30776C2.5784 2.22596 2.3919 2.23127 2.24182 2.32176C2.09175 2.41225 2 2.57471 2 2.74995V12.25C2 12.4252 2.09175 12.5877 2.24182 12.6781C2.3919 12.7686 2.5784 12.7739 2.73338 12.6921L11.7334 7.94214C11.8295 7.89139 11.9046 7.81188 11.9502 7.7174V12.2499C11.9502 12.5536 12.1965 12.7999 12.5002 12.7999C12.804 12.7999 13.0502 12.5536 13.0502 12.2499V2.74989ZM3 11.4207V3.5792L10.4288 7.49995L3 11.4207Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+        <p
+          id="player__end-time"
+          class="font-size=mrs(10px_12px_380px_800px) color=var(--neutral-11) user-select=none"
+        >
+          0:00
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <section
+    id="intro"
+    class="width=100% height=max-content width=100% display=grid grid-template-rows=max-content_max-content_auto grid-row-gap=5% md__grid-row-gap=12px align-content=center md__align-content=space-evenly padding=0_24px min-height=calc(100dvh_-_33px_-_12px_-_36px_-_12px) height=max-content"
+    aria-labelledby="intro-title"
+  >
+    <div
+      class="background-image=url('../assets/photo.webp') width=50% background-repeat=no-repeat aspect-ratio=3/4 position=relative background-position=center background-size=contain box-shadow=0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24) border-radius=4px hover:box-shadow=0_3px_6px_rgba(0,0,0,0.16),_0_3px_6px_rgba(0,0,0,0.23) cursor=help transition=all_$tr-fast active:box-shadow=none"
+      role="img"
+      aria-label="Profile photo of Dmitrii Shatokhin"
+      id="me-cover"
+    >
+      <div
+        class="width=100% height=100% background-color=var(--brand-9) opacity=0.2 pointer-events=none"
+      >
+      </div>
+    </div>
+
+    <div class="height=max-content">
+      <p
+        class="font-size=mrs(7px_16px_380px_800px)"
+        aria-label="Information about Dmitrii Shatokhin"
+      >
+        @dmtrshat ∙ {seniority}+ yrs Software Engineer/Architect ∙ Earth
+      </p>
+      <h1
+        id="intro-title"
+        class="font-size=mrs(28px_72px_380px_800px) color=var(--brand-11)"
+      >
+        DMITRII SHATOKHIN
+      </h1>
+      <p class="font-size=mrs(7px_16px_380px_800px) font-weight=bold">
+        RUST / PYTHON / JAVASCRIPT / AI / SCIENCE / WEB 3.0 / BLOCKCHAIN /
+        UI
+      </p>
+    </div>
+
+    <p class="font-size=mrs(14px_16px_380px_800px)">
+      Engineering leader with {seniority}+ years of experience building scalable
+      systems and leading technical teams. Achieved <strong
+        >2 successful exits</strong
+      >: autonomous vehicle startup acquired by{" "}
+      <ExternalLink
+        href="https://www.uber.com/us/en/about/"
+        ariaLabel="Uber"
+        text="Uber"
+      /> (2018) and part of Graph acquired by <ExternalLink
+        href="https://microsoft.com"
+        ariaLabel="Microsoft"
+        text="Microsoft"
+      />{" "}
+      <ExternalLink
+        href="https://support-partners.com"
+        ariaLabel="Support Partners"
+        text="Support Partners"
+      /> (2021). Currently Engineering Lead at FunnelFox, driving revenue-generating
+      products for top mobile apps.
+      <strong>Founder</strong> of <ExternalLink
+        href="https://github.com/persevie"
+        ariaLabel="Persevie"
+        text="Persevie"
+      />, creating high-performance open-source tools used by <strong
+        >Fortune 500</strong
+      > companies. Expertise in architecture design, team leadership, and delivering
+      measurable business impact.
+    </p>
+  </section>
+
+  <section
+    id="about"
+    aria-labelledby="about-title"
+    class="width=100% padding=24px margin=calc(5%_-_24px)_0 display=grid grid-template-rows=max-content_auto grid-row-gap=24px height=max-content"
+  >
+    <header>
+      <h2
+        id="about-title"
+        class="font-size=mrs(20px_24px_380px_800px) color=var(--brand-11)"
+      >
+        About
+      </h2>
+    </header>
+    <div>
+      <p class="font-size=mrs(14px_16px_380px_800px)">
+        I'm a technology generalist with a scientist's curiosity. Started with
+        C/C++ and Python, then expanded into web, AI, and data. I keep my
+        toolkit broad and practical — as Heinlein put it, "Specialization is for
+        insects."
+      </p>
+      <p class="font-size=mrs(14px_16px_380px_800px)">
+        I believe in simple systems that scale, code that reads like prose, and
+        teams that own their work end-to-end. I prioritize shipping over
+        perfection, but never compromise on reliability. My approach: reduce
+        complexity, automate what compounds, measure what matters.
+      </p>
+      <p class="font-size=mrs(14px_16px_380px_800px)">
+        Away from the keyboard, I'm with my family — exploring new places,
+        nature, and making music.
+      </p>
+    </div>
+  </section>
+
+  <section
+    id="projects"
+    aria-labelledby="projects-title"
+    class="width=100% padding=24px margin=calc(5%_-_24px)_0 display=grid grid-template-rows=max-content_auto grid-row-gap=48px height=max-content"
+  >
+    <div
+      class="display=grid grid-template-columns=2fr_1fr overflow=hidden padding=12px grid-column-gap=12px"
+    >
+      <h3
+        class="font-size=mrs(18px_36px_380px_800px) font-weight=400 color=var(--brand-11)"
+      >
+        I am the founder of
+        <a
+          class="hover:font-weight=bold text-decoration=underline color=var(--brand-9) hover:color=var(--brand-10) transition=all_$tr-fast"
+          href="https://github.com/persevie"
+        >
+          Persevie
+        </a>
+        , and I am creating something special for the world.
+      </h3>
+
+      <img
+        src="/assets/persevie.svg"
+        alt="Persevie logo"
+        class="border-radius=4px box-shadow=0_3px_6px_rgba(0,0,0,0.16),_0_3px_6px_rgba(0,0,0,0.23) height=auto!important width=auto!important"
+        height="600"
+        width="600"
+        loading="lazy"
+      />
+    </div>
+    <div
+      class="display=grid grid-template-rows=max-content_max-content_auto grid-row-gap=24px"
+    >
+      <header>
+        <h2
+          id="projects-title"
+          class="font-size=mrs(20px_24px_380px_800px) color=var(--brand-11)"
+        >
+          Projects
+        </h2>
+      </header>
+      <p class="font-size=mrs(14px_16px_380px_800px)">
+        Over the years, I've worked on some exciting projects. I've always
+        strived to push the boundaries of innovation. Each project is a new
+        adventure, and I relish the challenges they bring.
+      </p>
+      <ul
+        class="display=grid grid-template-columns=1fr grid-auto-rows=auto gap=0 list-style-type=none padding=0 margin=0 {_li}padding=20px {_li}box-sizing=border-box {_li}position=relative {_li}border-left=1px_solid_var(--neutral-6) {_li}border-right=1px_solid_var(--neutral-6) {_li}border-bottom=1px_solid_var(--neutral-6) {_li}transition=box-shadow_0.1s_ease,_border-color_0.1s_ease {_li:first-child}border-top=1px_solid_var(--neutral-6) md__grid-template-columns=1fr_1fr md__{_li}border=none md__{_li:first-child}border=1px_solid_var(--neutral-6) md__{_li:nth-child(2)}border-top=1px_solid_var(--neutral-6) md__{_li:nth-child(2)}border-right=1px_solid_var(--neutral-6) md__{_li:nth-child(2)}border-bottom=1px_solid_var(--neutral-6) md__{_li:nth-child(2n_+_1):not(:first-child)}border-left=1px_solid_var(--neutral-6) md__{_li:nth-child(2n_+_1):not(:first-child)}border-right=1px_solid_var(--neutral-6) md__{_li:nth-child(2n_+_1):not(:first-child)}border-bottom=1px_solid_var(--neutral-6) md__{_li:nth-child(2n):not(:first-child)}border-right=1px_solid_var(--neutral-6) md__{_li:nth-child(2n):not(:first-child)}border-bottom=1px_solid_var(--neutral-6) {_li:hover::before}content='' {_li:hover::before}position=absolute {_li:hover::before}top=-2px {_li:hover::before}left=-2px {_li:hover::before}right=-2px {_li:hover::before}bottom=-2px {_li:hover::before}border=3px_solid_var(--brand-7) {_li:hover::before}border-radius=4px {_li:hover::before}pointer-events=none {_li:hover::before}z-index=1 {_li:hover}box-shadow=0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24) {_li:hover}z-index=2 {_li:hover_>_a_>_header}color=var(--brand-11)"
+      >
+        <li
+          class="border-radius=4px_4px_0_0 md__border-radius=4px_0_0_0"
+          tabindex="0"
+        >
+          <a
+            aria-disabled="true"
+            tabindex="-1"
+            href="https://github.com/persevie/grimoire-css"
+            class="display=grid grid-template-rows=max-content_auto_max-content grid-row-gap=12px height=100% text-decoration=none color=currentColor"
+          >
+            <header
+              class="display=grid grid-template-columns=max-content_max-content justify-items=center align-items=center column-gap=6px"
+            >
+              <img
+                src="/assets/grimoire.svg"
+                alt="Grimoire logo"
+                class="height=mrs(26px_34px_380px_800px)"
+                height="34"
+                width="34"
+                loading="lazy"
+              />
+              <h3 class="font-size=mrs(16px_18px_380px_800px)">Grimoire CSS</h3>
+            </header>
+            <p
+              class="color=var(--brand-12) font-size=mrs(14px_16px_380px_800px)"
+            >
+              A Rust-powered CSS engine built for flexibility, reusable dynamic
+              styling, and ruthless performance across environments.
+            </p>
+            <footer><div></div></footer>
+          </a>
+        </li>
+
+        <li class="md__border-radius=0_4px_4px_0" tabindex="0">
+          <a
+            tabindex="-1"
+            href="https://github.com/persevie/statemanjs"
+            class="display=grid grid-template-rows=max-content_auto_max-content grid-row-gap=12px height=100% text-decoration=none color=currentColor"
+          >
+            <header
+              class="display=grid grid-template-columns=max-content_max-content justify-items=center align-items=center column-gap=6px"
+            >
+              <img
+                src="/assets/statemanjs.svg"
+                alt="Statemanjs logo"
+                class="height=mrs(26px_34px_380px_800px)"
+                height="34"
+                width="51"
+                loading="lazy"
+              />
+              <h3 class="font-size=mrs(16px_18px_380px_800px)">Statemanjs</h3>
+            </header>
+            <p
+              class="color=var(--brand-12) font-size=mrs(14px_16px_380px_800px)"
+            >
+              A framework-agnostic state library for JavaScript and Node.js with
+              predictable flows, minimal boilerplate, and solid DX.
+            </p>
+            <footer><div></div></footer>
+          </a>
+        </li>
+
+        <li class="border-radius=0_0_4px_4px" tabindex="0">
+          <a
+            tabindex="-1"
+            href="https://github.com/persevie/ebexjs"
+            class="display=grid grid-template-rows=max-content_auto_max-content grid-row-gap=12px height=100% text-decoration=none color=currentColor"
+          >
+            <header
+              class="display=grid grid-template-columns=max-content_max-content justify-items=center align-items=center column-gap=6px"
+            >
+              <img
+                src="/assets/ebexjs.svg"
+                alt="EBEXJS logo"
+                class="height=mrs(26px_34px_380px_800px)"
+                height="34"
+                width="38"
+                loading="lazy"
+              />
+              <h3 class="font-size=mrs(16px_18px_380px_800px)">EBEXJS</h3>
+            </header>
+            <p
+              class="color=var(--brand-12) font-size=mrs(14px_16px_380px_800px)"
+            >
+              A tiny, high-performance event bus for local app communication,
+              event management, and decoupled components.
+            </p>
+            <footer><div></div></footer>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section
+    id="experience"
+    aria-labelledby="experience-title"
+    class="width=100% padding=24px margin=calc(5%_-_24px)_0 display=grid grid-template-rows=max-content_auto grid-row-gap=24px height=max-content"
+  >
+    <header class="display=grid grid-row-gap=12px">
+      <h2
+        id="experience-title"
+        class="font-size=mrs(20px_24px_380px_800px) color=var(--brand-11)"
+      >
+        Experience
+      </h2>
+
+      <div
+        id="experience-download-container"
+        class="display=grid grid-template-rows=max-content_max-content grid-row-gap=6px md__grid-template-columns=max-content_max-content md__grid-column-gap=12px md__grid-row-gap=0"
+      >
+        <button
+          id="download-resume"
+          aria-label="Download resume as PDF"
+          class="border-radius=4px border=1px_solid_var(--brand-7) font-size=mrs(12px_14px_380px_800px) color=var(--brand-12) hover:color=var(--brand-11) cursor=pointer transition=all_$tr-fast background-color=var(--brand-3) hover:background-color=var(--brand-4) active:background-color=var(--brand-5)!important"
+        >
+          Download resume
+        </button>
+      </div>
+    </header>
+    <div
+      class="display=grid grid-template-rows=max-content_auto grid-row-gap=12px"
+    >
+      <p class="font-size=mrs(14px_16px_380px_800px)">
+        Over the years, I've had the chance to try many different roles in the
+        tech industry. From planning product roadmaps and writing code to
+        mentoring new developers, each experience has been part of my journey of
+        growth and learning. I've worked with talented people across various
+        countries and companies, always aiming to create innovative solutions
+        and supportive team environments. My journey has helped me shape the
+        technical direction of projects, lead creative efforts, and tackle new
+        challenges in the ever-changing tech world.
+      </p>
+      <p class="font-size=mrs(14px_16px_380px_800px)">
+        I lead engineering and product execution end-to-end: set technical
+        strategy and architecture, align with product, turn goals into roadmaps,
+        and deliver reliable systems at scale. I design teams and processes that
+        keep delivery predictable.
+      </p>
+      <p class="font-size=mrs(14px_16px_380px_800px)">
+        My operating model prioritizes reliability, performance, security, and
+        cost. I reduce complexity, automate where it compounds, and manage by
+        metrics — SLAs/SLOs, quality, cycle time, and throughput. Standards,
+        CI/CD, and clear ownership are non-negotiable.
+      </p>
+      <p class="font-size=mrs(14px_16px_380px_800px)">
+        For a detailed view of my professional journey, you can download my full
+        resume or profile by clicking the buttons above, or visit my LinkedIn
+        page by clicking the link.
+      </p>
+    </div>
+  </section>
+
+  <section
+    id="music"
+    aria-labelledby="music-title"
+    class="width=100% padding=24px margin=calc(5%_-_24px)_0 display=grid grid-template-rows=max-content_auto grid-row-gap=24px height=max-content"
+  >
+    <header class="display=grid grid-row-gap=12px">
+      <h2
+        id="music-title"
+        class="font-size=mrs(20px_24px_380px_800px) color=var(--brand-11)"
+      >
+        Music
+      </h2>
+
+      <ul
+        class="padding=0 list-style=none border=none font-size=mrs(12px_14px_380px_800px) display=grid grid-auto-flow=column grid-auto-columns=max-content grid-column-gap=6px"
+      >
+        <li>
+          <ExternalLink
+            href="https://music.apple.com/ru/artist/papa-dima/1746374696?l=en-GB"
+            ariaLabel="Apple Music"
+            text="Apple Music"
+          />
+        </li>
+        <li>
+          <ExternalLink
+            href="https://open.spotify.com/artist/0bGvb0429HS5x3IxcGSVBJ"
+            ariaLabel="Spotify"
+            text="Spotify"
+          />
+        </li>
+      </ul>
+    </header>
+
+    <p class="font-size=mrs(14px_16px_380px_800px)">
+      Music is my constant companion. Whether I'm coding, relaxing, or spending
+      time with my family, there's always a soundtrack playing in the
+      background. Thisi is one of my released albums - "Pure Moments Pt. 1", a
+      collection of lo-fi/downtempo/chill tracks that capture the precious
+      moments of my daughter's growth. Each track tells a story, and for me,
+      it's a way to encapsulate the beautiful moments of our lives. Music isn't
+      just a hobby; it's a passion that adds a unique rhythm to everything I do.
+    </p>
+
+    <div class="position=relative margin=24px_0">
+      <p
+        class="height=24px width=140px padding=3px background-color=var(--brand-1) position=absolute top=-12px left=12px text-align=center font-size=12px"
+      >
+        Pure Moments Pt. 1
+      </p>
+
+      <div class="border=1px_solid_var(--neutral-6) border-radius=4px">
+        <ul
+          id="tracks_papa-dima"
+          class="list-style=none display=grid grid-auto-rows=max-content grid-row-gap=6px padding=12px_6px overflow-x=hidden grid-template-columns=100% width=100%"
+        >
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="contacts"
+    aria-labelledby="contacts-title"
+    class="md__border-radius=4px width=100% display=grid grid-template-rows=max-content_auto grid-row-gap=24px height=max-content background-color=var(--brand-a3) padding=24px margin-top=calc(5%_-_24px) padding-bottom=170px"
+  >
+    <header>
+      <h2
+        id="contacts-title"
+        class="font-size=mrs(20px_24px_380px_800px) color=var(--brand-11)"
+      >
+        Contacts
+      </h2>
+    </header>
+    <div class="display=grid grid-row-gap=24px">
+      <div class="display=grid grid-row-gap=12px">
+        <p class="font-size=mrs(14px_16px_380px_800px)">
+          Thank you for taking the time to learn a bit about me! If you're
+          interested in exploring my work further or just want to connect, here
+          are some links to my online presence:
+        </p>
+
+        <ul
+          class="padding=0 list-style=none border=none font-size=mrs(12px_14px_380px_800px) display=grid grid-auto-rows=max-content grid-row-gap=6px padding-left=12px grid-template-columns=max-content"
+        >
+          <li>
+            <ExternalLink
+              href="https://github.com/dmtrshat"
+              ariaLabel="GitHub"
+              text="GitHub"
+            />
+          </li>
+          <li>
+            <ExternalLink
+              href="https://www.linkedin.com/in/dmtrshat/"
+              ariaLabel="LinkedIn"
+              text="LinkedIn"
+            />
+          </li>
+          <li>
+            <ExternalLink
+              href="https://dev.to/dmtrshat"
+              ariaLabel="Dev.to blog"
+              text="Dev.to"
+            />
+          </li>
+          <li>
+            <ExternalLink
+              href="https://hackernoon.com/u/dmtrshat"
+              ariaLabel="Hackernoon blog"
+              text="Hackernoon"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import "../scripts/player/index.mjs";
+    import "../scripts/index/index.mjs";
+  </script>
+</BaseLayout>

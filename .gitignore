@@ -1,3 +1,6 @@
-node_modules
+.astro/
+node_modules/
+pnpm-debug.log*
 .DS_Store
-.env
+.vscode/
+.idea/
