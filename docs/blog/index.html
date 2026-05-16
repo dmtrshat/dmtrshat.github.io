@@ -4,18 +4,11 @@
 MENU
 </button> <ul id="nav-links" class="display=none list-style=none position=absolute width=calc(100vw_-_12px) border=none left=6px padding=6px_18px font-size=12px grid-auto-rows=max-content grid-row-gap=6px md__display=grid!important md__position=static_!important grid-auto-flow=row margin-bottom=12px md__margin-bottom=0 md__align-items=center_!important md__background=none_!important md__padding=0_!important md__grid-auto-flow=column!important md__grid-auto-columns=max-content!important md__grid-column-gap=12px!important md__width=100%!important background-color=var(--neutral-3) left=auto bottom=30px border-radius=4px border=1px_solid_var(--neutral-6) right=auto box-shadow=0_1px_3px_#0000001f,_0_1px_2px_#0000003d md__box-shadow=none md__border=none md__background=none"> <li> <a href="/" class="text-decoration=none color=var(--brand-12) hover:color=var(--brand-11) hover:text-decoration=underline" aria-label="About Dmitrii Shatokhin"> [m]ain site </a> </li> </ul> </nav> </footer> <script>
       if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/service-worker.js").then(
-            (registration) => {
-              console.log(
-                "ServiceWorker registration successful with scope: ",
-                registration.scope,
-              );
-            },
-            (err) => {
-              console.log("ServiceWorker registration failed: ", err);
-            },
-          );
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (const reg of registrations) reg.unregister();
+        });
+        caches.keys().then((keys) => {
+          for (const key of keys) caches.delete(key);
         });
       }
     </script> <script type="module">function m(){const e={hamburger:document.getElementById("hamburger"),navLinks:document.getElementById("nav-links")};function a(){e.navLinks.classList.contains("display=grid")?e.navLinks.classList.replace("display=grid","display=none"):e.navLinks.classList.replace("display=none","display=grid")}function c(n){!(e.hamburger.contains(n.target)||e.navLinks.contains(n.target))&&window.innerWidth<768&&e.navLinks.classList.replace("display=grid","display=none")}function d(){window.innerWidth>=768&&e.navLinks.classList.replace("display=grid","display=none")}e.hamburger.addEventListener("click",a),document.addEventListener("click",c),window.addEventListener("resize",d)}function h(){const e={hackerLight:"hacker-light",hackerDark:"hacker-dark",system:"system"},a="dmtrshat-theme",c=document.getElementById("theme-select"),d=window.matchMedia("(prefers-color-scheme: dark)");function n(){return d.matches?e.hackerDark:e.hackerLight}function i(t){let s=t;Object.values(e).includes(t)||(console.error(`Invalid theme: '${t}'; Using the default one`),s=e.system),localStorage.setItem(a,s),document.body.setAttribute("data-theme-mode",s);const l=s===e.system?n():s;document.body.setAttribute("data-theme",l)}function o(t){t.target.id==="hacker-light-btn"?(i(e.hackerDark),t.stopPropagation()):t.target.id==="hacker-dark-btn"?(i(e.system),t.stopPropagation()):t.target.id==="system-btn"&&(i(e.hackerLight),t.stopPropagation())}function r(){const t=localStorage.getItem(a);i(t||e.system)}d.addEventListener("change",()=>{document.body.getAttribute("data-theme-mode")===e.system&&document.body.setAttribute("data-theme",n())}),c.addEventListener("click",o),r()}document.addEventListener("DOMContentLoaded",()=>{m(),h()});</script> </body> </html>

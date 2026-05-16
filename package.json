@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "grim build && astro build && node scripts/generate-cache-list.mjs",
+    "build": "grim build && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "cache:list": "node scripts/generate-cache-list.mjs"
